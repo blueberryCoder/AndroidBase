@@ -60,6 +60,12 @@ public class ScrollConfictActivity extends BaseActivity {
                         .commit();
                 break;
             case R.id.btn_innner_scroll_vv:
+                Logger.i("click btn_innner_scroll_vv");
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container,
+                                ScrollConfictFragment.newInstance(ScrollConfictFragment.INNER_VV))
+                        .commit();
                 break;
         }
     }

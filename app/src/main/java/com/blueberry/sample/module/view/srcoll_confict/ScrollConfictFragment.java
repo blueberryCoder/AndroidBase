@@ -15,6 +15,7 @@ import com.blueberry.sample.widget.HorizontalEx;
 import com.blueberry.sample.widget.HorizontalEx2;
 import com.blueberry.sample.widget.ListViewEx;
 import com.blueberry.sample.widget.refresh.RefreshLayoutBase;
+import com.blueberry.sample.widget.refresh.RefreshLayoutBase2;
 import com.blueberry.sample.widget.refresh.RefreshListView;
 
 import java.util.List;
@@ -43,6 +44,7 @@ public class ScrollConfictFragment extends BaseFragment<IScrollConfict, ScrollCo
     private HorizontalEx mHorizontalEx;
     private HorizontalEx2 mHorizontalEx2;
     private RefreshListView mRefreshListView;
+    private RefreshLayoutBase2 mRefreshListView2 ;
 
     public static ScrollConfictFragment newInstance(int code) {
 
@@ -75,9 +77,10 @@ public class ScrollConfictFragment extends BaseFragment<IScrollConfict, ScrollCo
             case INNER_HV:
                 mHorizontalEx2 = new HorizontalEx2(getContext());
                 root = mHorizontalEx2;
-
                 break;
             case INNER_VV:
+                mRefreshListView2 = new RefreshLayoutBase2(getContext()) ;
+                root = mRefreshListView2 ;
                 break;
         }
 

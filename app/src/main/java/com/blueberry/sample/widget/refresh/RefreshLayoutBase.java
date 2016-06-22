@@ -20,7 +20,7 @@ import com.blueberry.sample.R;
 /**
  * Created by blueberry on 2016/6/21.
  *
- *
+ *外部拦截(同向)
  *
  */
 public abstract class RefreshLayoutBase<T extends View> extends ViewGroup {
