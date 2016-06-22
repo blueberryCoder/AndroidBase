@@ -24,7 +24,7 @@
             >
         </activity>
 
-        <activity android:name="com.blueberry.sample.module.view.srcoll_confict.ScrollConfictActivity"
+        <activity android:name=".module.view.srcoll_confict.ScrollConflictActivity"
             android:label="滑动冲突"
             >
 

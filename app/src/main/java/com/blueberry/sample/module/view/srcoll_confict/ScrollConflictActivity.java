@@ -13,7 +13,7 @@ import butterknife.OnClick;
 /**
  * Created by blueberry on 2016/6/20.
  */
-public class ScrollConfictActivity extends BaseActivity {
+public class ScrollConflictActivity extends BaseActivity {
 
     @Override
     protected int getLayoutResId() {
@@ -21,7 +21,7 @@ public class ScrollConfictActivity extends BaseActivity {
     }
 
     @Override
-    protected ScrollConfitPresenter createPresenter() {
+    protected ScrollConflictPresenter createPresenter() {
         return null;
     }
 
@@ -40,7 +40,7 @@ public class ScrollConfictActivity extends BaseActivity {
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragment_container,
-                                ScrollConfictFragment.newInstance(ScrollConfictFragment.OUT_HV))
+                                ScrollConflictFragment.newInstance(ScrollConflictFragment.OUT_HV))
                         .commit();
                 break;
             case R.id.btn_out_scroll_vv:
@@ -48,7 +48,7 @@ public class ScrollConfictActivity extends BaseActivity {
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragment_container,
-                                ScrollConfictFragment.newInstance(ScrollConfictFragment.OUT_VV))
+                                ScrollConflictFragment.newInstance(ScrollConflictFragment.OUT_VV))
                         .commit();
                 break;
             case R.id.btn_innner_scroll_hv:
@@ -56,7 +56,7 @@ public class ScrollConfictActivity extends BaseActivity {
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragment_container,
-                                ScrollConfictFragment.newInstance(ScrollConfictFragment.INNER_HV))
+                                ScrollConflictFragment.newInstance(ScrollConflictFragment.INNER_HV))
                         .commit();
                 break;
             case R.id.btn_innner_scroll_vv:
@@ -64,7 +64,7 @@ public class ScrollConfictActivity extends BaseActivity {
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragment_container,
-                                ScrollConfictFragment.newInstance(ScrollConfictFragment.INNER_VV))
+                                ScrollConflictFragment.newInstance(ScrollConflictFragment.INNER_VV))
                         .commit();
                 break;
         }

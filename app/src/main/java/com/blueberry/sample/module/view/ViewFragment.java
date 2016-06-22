@@ -14,7 +14,7 @@ import com.orhanobut.logger.Logger;
 import com.blueberry.sample.common.BaseFragment;
 import com.blueberry.sample.R;
 import com.blueberry.sample.module.view.data.ViewBean;
-import com.blueberry.sample.module.view.srcoll_confict.ScrollConfictActivity;
+import com.blueberry.sample.module.view.srcoll_confict.ScrollConflictActivity;
 import com.blueberry.sample.widget.SpaceItemDecoration;
 
 import java.util.List;
@@ -78,7 +78,7 @@ public class ViewFragment extends BaseFragment<IView, ViewPresenter> implements 
                 case 1:
                     Logger.i("进入滑动冲突页面");
 
-                    Intent intent =new Intent(getContext(), ScrollConfictActivity.class);
+                    Intent intent =new Intent(getContext(), ScrollConflictActivity.class);
                     startActivity(intent);
                     break;
                 case 2:

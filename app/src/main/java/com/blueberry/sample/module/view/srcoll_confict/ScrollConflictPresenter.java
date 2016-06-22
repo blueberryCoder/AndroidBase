@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by blueberry on 2016/6/20.
  */
-public class ScrollConfitPresenter extends BasePresenter<IScrollConfict> {
+public class ScrollConflictPresenter extends BasePresenter<IScrollConflict> {
 
     public void loadOutHVData() {
         List<String> data1 = new ArrayList<>();

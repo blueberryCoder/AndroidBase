@@ -29,9 +29,9 @@ import rx.schedulers.Schedulers;
 /**
  * Created by blueberry on 2016/6/20.
  */
-public class ScrollConfictFragment extends BaseFragment<IScrollConfict, ScrollConfitPresenter> implements IScrollConfict {
+public class ScrollConflictFragment extends BaseFragment<IScrollConflict, ScrollConflictPresenter> implements IScrollConflict {
 
-    private static final String TAG = "ScrollConfictFragment";
+    private static final String TAG = "ScrollConflictFragment";
 
     public static final String SHOW_KEY = "show_key";
 
@@ -46,11 +46,11 @@ public class ScrollConfictFragment extends BaseFragment<IScrollConfict, ScrollCo
     private RefreshListView mRefreshListView;
     private RefreshLayoutBase2 mRefreshListView2 ;
 
-    public static ScrollConfictFragment newInstance(int code) {
+    public static ScrollConflictFragment newInstance(int code) {
 
         Bundle args = new Bundle();
         args.putInt(SHOW_KEY, code);
-        ScrollConfictFragment fragment = new ScrollConfictFragment();
+        ScrollConflictFragment fragment = new ScrollConflictFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -91,8 +91,8 @@ public class ScrollConfictFragment extends BaseFragment<IScrollConfict, ScrollCo
     }
 
     @Override
-    protected ScrollConfitPresenter createPresenter() {
-        return new ScrollConfitPresenter();
+    protected ScrollConflictPresenter createPresenter() {
+        return new ScrollConflictPresenter();
     }
 
     @Override
