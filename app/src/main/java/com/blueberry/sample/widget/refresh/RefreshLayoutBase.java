@@ -19,8 +19,11 @@ import com.blueberry.sample.R;
 
 /**
  * Created by blueberry on 2016/6/21.
+ *
+ *
+ *
  */
-public abstract class   RefreshLayoutBase<T extends View> extends ViewGroup {
+public abstract class RefreshLayoutBase<T extends View> extends ViewGroup {
 
     private static final String TAG = "RefreshLayoutBase";
 
@@ -28,7 +31,8 @@ public abstract class   RefreshLayoutBase<T extends View> extends ViewGroup {
     public static final int STATUS_RELEASE_TO_REFRESH = 2;
     public static final int STATUS_PULL_TO_REFRESH = 3;
     public static final int STATUS_IDLE = 4;
-    protected int currentStatus =STATUS_IDLE ;
+    public static final int STATUS_LOAD_MORE =5;
+    private static int SCROLL_DURATION =500;
 
     protected ViewGroup mHeadView;
     protected ViewGroup mFootView;
@@ -40,6 +44,7 @@ public abstract class   RefreshLayoutBase<T extends View> extends ViewGroup {
 
     private boolean isFistTouch = true;
 
+    protected int currentStatus = STATUS_IDLE;
     private int mScreenWidth;
     private int mScreenHeight;
     private int mLastXIntercepted;
@@ -177,10 +182,6 @@ public abstract class   RefreshLayoutBase<T extends View> extends ViewGroup {
             case MotionEvent.ACTION_DOWN:
                 mLastXIntercepted = x;
                 mLastYIntercepted = y;
-                if (!mScoller.isFinished()) {
-                    mScoller.abortAnimation();
-                    intercepted = true;
-                }
                 break;
             case MotionEvent.ACTION_MOVE:
                 final int deltaY = x - mLastYIntercepted;
@@ -198,16 +199,18 @@ public abstract class   RefreshLayoutBase<T extends View> extends ViewGroup {
     }
 
     private void doRefresh() {
+        Log.i(TAG, "doRefresh: ");
         if (currentStatus == STATUS_RELEASE_TO_REFRESH) {
-            mScoller.startScroll(0, getScrollY(), 0, mInitScrollY - getScrollY(), 500);
-            invalidate();
+            mScoller.startScroll(0, getScrollY(), 0, mInitScrollY - getScrollY(), SCROLL_DURATION);
             currentStatus = STATUS_IDLE;
         } else if (currentStatus == STATUS_PULL_TO_REFRESH) {
+            mScoller.startScroll(0,getScrollY(),0,0-getScrollY(),SCROLL_DURATION);
             if (null != mOnRefreshListener) {
                 currentStatus = STATUS_LOADING;
                 mOnRefreshListener.refresh();
             }
         }
+        invalidate();
     }
 
     @Override
@@ -261,9 +264,9 @@ public abstract class   RefreshLayoutBase<T extends View> extends ViewGroup {
 
         curY = getScrollY();
         int slop = mInitScrollY / 2;
-        if (curY > 0 && curY < slop) {
+        if (curY > 0 && curY <=slop) {
             currentStatus = STATUS_PULL_TO_REFRESH;
-        } else if (curY > 0 && curY > slop) {
+        } else if (curY > 0 && curY >= slop) {
             currentStatus = STATUS_RELEASE_TO_REFRESH;
         }
     }
@@ -280,7 +283,7 @@ public abstract class   RefreshLayoutBase<T extends View> extends ViewGroup {
      * 加载完成调用这个方法
      */
     public void refreshComplete() {
-        mScoller.startScroll(0, getScrollY(), 0, mInitScrollY - getScrollY(), 500);
+        mScoller.startScroll(0, getScrollY(), 0, mInitScrollY - getScrollY(), SCROLL_DURATION);
         currentStatus = STATUS_IDLE;
         invalidate();
     }
@@ -288,18 +291,21 @@ public abstract class   RefreshLayoutBase<T extends View> extends ViewGroup {
     /**
      * 显示 Footer
      */
-    public void showFooter(){
-        mScoller.startScroll(0,getScrollY(),0,mFootView.getMeasuredHeight()
-                ,500);
+    public void showFooter() {
+        if(currentStatus==STATUS_LOAD_MORE) return ;
+        currentStatus = STATUS_LOAD_MORE ;
+        mScoller.startScroll(0, getScrollY(), 0, mFootView.getMeasuredHeight()
+                , SCROLL_DURATION);
         invalidate();
+
     }
 
 
     /**
      * loadMore完成之后调用
      */
-    public void footerComplete(){
-        mScoller.startScroll(0,getScrollY(),0,mInitScrollY-getScrollY(),500);
+    public void footerComplete() {
+        mScoller.startScroll(0, getScrollY(), 0, mInitScrollY - getScrollY(), SCROLL_DURATION);
         invalidate();
         currentStatus = STATUS_IDLE;
     }

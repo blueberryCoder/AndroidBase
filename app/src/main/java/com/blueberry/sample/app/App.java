@@ -18,4 +18,3 @@ public class App extends Application {
         Logger.init("Shares").setLogLevel(LogLevel.FULL);
     }
 }
-//我就是来测试的 zjx

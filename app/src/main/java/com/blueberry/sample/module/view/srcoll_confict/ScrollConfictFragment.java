@@ -157,7 +157,6 @@ public class ScrollConfictFragment extends BaseFragment<IScrollConfict, ScrollCo
                 Observable.create(new Observable.OnSubscribe<String>() {
                     @Override
                     public void call(Subscriber<? super String> subscriber) {
-
                         Log.i(TAG, " sleep current thread: "+Thread.currentThread().getName());
                         try {
                             /*模拟 拉取数据*/
