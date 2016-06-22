@@ -7,6 +7,7 @@ import android.widget.ListView;
 
 /**
  * Created by blueberry on 2016/6/20.
+ * 内部拦截事件
  */
 public class ListViewEx extends ListView {
 
@@ -34,6 +35,12 @@ public class ListViewEx extends ListView {
         this.mHorizontalEx2 = mHorizontalEx2;
     }
 
+    /**
+     * 使用 outter.requestDisallowInterceptTouchEvent();
+     * 来决定父控件是否对事件进行拦截
+     * @param ev
+     * @return
+     */
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         int x = (int) ev.getX();

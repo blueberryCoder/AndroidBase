@@ -83,7 +83,11 @@ public class HorizontalEx extends ViewGroup {
         }
     }
 
-
+    /**
+     * 拦截事件
+     * @param ev
+     * @return
+     */
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         boolean intercepted = false;
@@ -91,6 +95,7 @@ public class HorizontalEx extends ViewGroup {
         int y = (int) ev.getY();
 
         switch (ev.getAction()) {
+            /*如果拦截了Down事件,则子类不会拿到这个事件序列*/
             case MotionEvent.ACTION_DOWN:
                 lastXIntercept = x;
                 lastYIntercept = y;
@@ -103,6 +108,7 @@ public class HorizontalEx extends ViewGroup {
             case MotionEvent.ACTION_MOVE:
                 final int deltaX = x - lastXIntercept;
                 final int deltaY = y - lastYIntercept;
+                /*根据条件判断是否拦截该事件*/
                 if (Math.abs(deltaX) > Math.abs(deltaY)) {
                     intercepted = true;
                 } else {
@@ -126,7 +132,6 @@ public class HorizontalEx extends ViewGroup {
         int y = (int) event.getY();
         mVelocityTracker.addMovement(event);
         ViewConfiguration configuration = ViewConfiguration.get(getContext());
-
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 if (!mScroller.isFinished()) {

@@ -18,6 +18,7 @@ import java.util.List;
 
 /**
  * Created by blueberry on 2016/6/22.
+ * 结合内部类 ListVieEx
  * 内部拦截法，同向
  */
 public class RefreshLayoutBase2 extends ViewGroup {
@@ -96,6 +97,12 @@ public class RefreshLayoutBase2 extends ViewGroup {
         scrollTo(0, mInitScrollY);
 
     }
+
+    /**
+     * 不拦截Down 其他一律拦截
+     * @param ev
+     * @return
+     */
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_DOWN) return false;
@@ -155,7 +162,6 @@ public class RefreshLayoutBase2 extends ViewGroup {
 
     public static class ListViewEx extends ListView {
 
-        private int lastY;
         private RefreshLayoutBase2 outter;
 
         public ListViewEx(Context context, RefreshLayoutBase2 outter) {
@@ -171,6 +177,12 @@ public class RefreshLayoutBase2 extends ViewGroup {
             super(context, attrs, defStyleAttr);
         }
 
+        /**
+         * 使用 outter.requestDisallowInterceptTouchEvent();
+         * 来决定父控件是否对事件进行拦截
+         * @param ev
+         * @return
+         */
         @Override
         public boolean dispatchTouchEvent(MotionEvent ev) {
             switch (ev.getAction()) {

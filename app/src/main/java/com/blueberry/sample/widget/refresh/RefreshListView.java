@@ -7,6 +7,8 @@ import android.widget.ListView;
 
 /**
  * Created by blueberry on 2016/6/21.
+ *
+ * RefreshLayoutBase 的一个实现类
  */
 public class RefreshListView extends RefreshLayoutBase<ListView> {
 

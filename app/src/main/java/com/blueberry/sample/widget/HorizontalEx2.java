@@ -12,8 +12,8 @@ import android.widget.Scroller;
 /**
  * Created by blueberry on 2016/6/20.
  * <p/>
- * 交错拦截
- * 外部拦截法
+ * 内部拦截
+ * 和 ListViewEx配合使用
  */
 public class HorizontalEx2 extends ViewGroup {
 
@@ -77,6 +77,11 @@ public class HorizontalEx2 extends ViewGroup {
         }
     }
 
+    /**
+     * 不拦截Down事件，其他一律拦截
+     * @param ev
+     * @return
+     */
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
