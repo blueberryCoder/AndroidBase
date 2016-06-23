@@ -1,4 +1,4 @@
-package com.blueberry.sample.widget;
+package com.blueberry.sample.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;

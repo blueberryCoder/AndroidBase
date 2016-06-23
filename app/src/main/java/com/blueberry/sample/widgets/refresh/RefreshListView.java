@@ -1,4 +1,4 @@
-package com.blueberry.sample.widget.refresh;
+package com.blueberry.sample.widgets.refresh;
 
 import android.content.Context;
 import android.util.AttributeSet;

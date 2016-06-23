@@ -11,7 +11,7 @@ import com.blueberry.sample.common.BaseActivity;
 import com.blueberry.sample.R;
 import com.blueberry.sample.module.home.data.HomeData;
 import com.blueberry.sample.module.PageActivity;
-import com.blueberry.sample.widget.ListItemDecoration;
+import com.blueberry.sample.widgets.ListItemDecoration;
 
 import java.util.List;
 

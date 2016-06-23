@@ -1,4 +1,4 @@
-package com.blueberry.sample.widget;
+package com.blueberry.sample.widgets;
 
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;

@@ -15,7 +15,7 @@ import com.blueberry.sample.common.BaseFragment;
 import com.blueberry.sample.R;
 import com.blueberry.sample.module.view.data.ViewBean;
 import com.blueberry.sample.module.view.srcoll_confict.ScrollConflictActivity;
-import com.blueberry.sample.widget.SpaceItemDecoration;
+import com.blueberry.sample.widgets.SpaceItemDecoration;
 
 import java.util.List;
 

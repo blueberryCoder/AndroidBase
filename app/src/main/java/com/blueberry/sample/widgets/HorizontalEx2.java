@@ -1,4 +1,4 @@
-package com.blueberry.sample.widget;
+package com.blueberry.sample.widgets;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -11,34 +11,28 @@ import android.widget.Scroller;
 
 /**
  * Created by blueberry on 2016/6/20.
- *
- * 解决交错的滑动冲突
- *
- * 外部拦截法
+ * <p/>
+ * 内部拦截
+ * 和 ListViewEx配合使用
  */
-public class HorizontalEx extends ViewGroup {
+public class HorizontalEx2 extends ViewGroup {
 
-    private static final String TAG = "HorizontalEx";
-
-    private boolean isFirstTouch = true;
+    private int lastX, lastY;
     private int childIndex;
-    private int childCount;
-    private int lastXIntercept, lastYIntercept, lastX, lastY;
-
     private Scroller mScroller;
     private VelocityTracker mVelocityTracker;
 
-    public HorizontalEx(Context context) {
+    public HorizontalEx2(Context context) {
         super(context);
         init();
     }
 
-    public HorizontalEx(Context context, AttributeSet attrs) {
+    public HorizontalEx2(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public HorizontalEx(Context context, AttributeSet attrs, int defStyleAttr) {
+    public HorizontalEx2(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -51,18 +45,18 @@ public class HorizontalEx extends ViewGroup {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int width = MeasureSpec.getSize(widthMeasureSpec);
-        int height = MeasureSpec.getSize(heightMeasureSpec);
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int height = MeasureSpec.getSize(heightMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
 
-        childCount = getChildCount();
+        int childCount = getChildCount();
         measureChildren(widthMeasureSpec, heightMeasureSpec);
 
         if (childCount == 0) {
             setMeasuredDimension(0, 0);
         } else if (widthMode == MeasureSpec.AT_MOST && heightMode == MeasureSpec.AT_MOST) {
-            width = childCount * getChildAt(0).getMeasuredWidth();
             height = getChildAt(0).getMeasuredHeight();
+            width = childCount * getChildAt(0).getMeasuredWidth();
             setMeasuredDimension(width, height);
         } else if (widthMode == MeasureSpec.AT_MOST) {
             width = childCount * getChildAt(0).getMeasuredWidth();
@@ -75,56 +69,33 @@ public class HorizontalEx extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        int left = 0;
+        int leftOffset = 0;
         for (int i = 0; i < getChildCount(); i++) {
-            final View child = getChildAt(i);
-            child.layout(left + l, t, r + left, b);
-            left += child.getMeasuredWidth();
+            View child = getChildAt(i);
+            child.layout(l + leftOffset, t, r + leftOffset, b);
+            leftOffset += child.getMeasuredWidth();
         }
     }
 
     /**
-     * 拦截事件
+     * 不拦截Down事件，其他一律拦截
      * @param ev
      * @return
      */
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        boolean intercepted = false;
-        int x = (int) ev.getX();
-        int y = (int) ev.getY();
-
-        switch (ev.getAction()) {
-            /*如果拦截了Down事件,则子类不会拿到这个事件序列*/
-            case MotionEvent.ACTION_DOWN:
-                lastXIntercept = x;
-                lastYIntercept = y;
-                intercepted = false;
-                if (!mScroller.isFinished()) {
-                    mScroller.abortAnimation();
-                    intercepted = true;
-                }
-                break;
-            case MotionEvent.ACTION_MOVE:
-                final int deltaX = x - lastXIntercept;
-                final int deltaY = y - lastYIntercept;
-                /*根据条件判断是否拦截该事件*/
-                if (Math.abs(deltaX) > Math.abs(deltaY)) {
-                    intercepted = true;
-                } else {
-                    intercepted = false;
-                }
-                break;
-            case MotionEvent.ACTION_UP:
-                intercepted = false;
-                break;
-
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            if (!mScroller.isFinished()) {
+                mScroller.abortAnimation();
+                return true;
+            }
+            return false;
+        } else {
+            return true;
         }
-        lastXIntercept = x;
-        lastYIntercept = y;
-        return intercepted;
     }
 
+    private boolean isFirstTouch = true;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -139,30 +110,27 @@ public class HorizontalEx extends ViewGroup {
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
-                /*因为这里父控件拿不到Down事件，所以使用一个布尔值，
-                    当事件第一次来到父控件时，对lastX,lastY赋值*/
                 if (isFirstTouch) {
-                    lastX = x;
-                    lastY = y;
                     isFirstTouch = false;
+                    lastY = y;
+                    lastX = x;
                 }
                 final int deltaX = x - lastX;
                 scrollBy(-deltaX, 0);
                 break;
             case MotionEvent.ACTION_UP:
-                int scrollX = getScrollX();
-                final int childWidth = getChildAt(0).getWidth();
-                mVelocityTracker.computeCurrentVelocity(1000, configuration.getScaledMaximumFlingVelocity());
-                float xVelocity = mVelocityTracker.getXVelocity();
-                if (Math.abs(xVelocity) > configuration.getScaledMinimumFlingVelocity()) {
-                    childIndex = xVelocity < 0 ? childIndex + 1 : childIndex - 1;
-                } else {
-                    childIndex = (scrollX + childWidth / 2) / childWidth;
-                }
-                childIndex = Math.min(getChildCount() - 1, Math.max(childIndex, 0));
-                smoothScrollBy(childIndex * childWidth - scrollX, 0);
-                mVelocityTracker.clear();
                 isFirstTouch = true;
+                int scrollX = getScrollX();
+                mVelocityTracker.computeCurrentVelocity(1000, configuration.getScaledMaximumFlingVelocity());
+                float mVelocityX = mVelocityTracker.getXVelocity();
+                if (Math.abs(mVelocityX) > configuration.getScaledMinimumFlingVelocity()) {
+                    childIndex = mVelocityX < 0 ? childIndex + 1 : childIndex - 1;
+                } else {
+                    childIndex = (scrollX + getChildAt(0).getWidth() / 2) / getChildAt(0).getWidth();
+                }
+                childIndex = Math.min(getChildCount() - 1, Math.max(0, childIndex));
+                smoothScrollBy(childIndex*getChildAt(0).getWidth()-scrollX,0);
+                mVelocityTracker.clear();
                 break;
         }
 
@@ -171,16 +139,16 @@ public class HorizontalEx extends ViewGroup {
         return true;
     }
 
-    void smoothScrollBy(int dx, int dy) {
-        mScroller.startScroll(getScrollX(), getScrollY(), dx, dy, 500);
+    private void smoothScrollBy(int dx, int dy) {
+        mScroller.startScroll(getScrollX(), getScrollY(), dx, dy,500);
         invalidate();
     }
 
     @Override
     public void computeScroll() {
-        if (mScroller.computeScrollOffset()) {
-            scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
-            invalidate();
+        if(mScroller.computeScrollOffset()){
+            scrollTo(mScroller.getCurrX(),mScroller.getCurrY());
+            postInvalidate();
         }
     }
 

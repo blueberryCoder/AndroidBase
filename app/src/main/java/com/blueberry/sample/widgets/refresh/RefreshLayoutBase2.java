@@ -1,4 +1,4 @@
-package com.blueberry.sample.widget.refresh;
+package com.blueberry.sample.widgets.refresh;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -190,10 +190,7 @@ public class RefreshLayoutBase2 extends ViewGroup {
                     outter.requestDisallowInterceptTouchEvent(true);
                     break;
                 case MotionEvent.ACTION_MOVE:
-                    Log.i(TAG, "dispatchTouchEvent: isTop: "+isTop()
-                        +" outter.getScrollY: "+outter.getScrollY()
-                            +" mInitScrollY: "+outter.mInitScrollY
-                    );
+
                     if ( isTop() && outter.getScrollY() <= outter.mInitScrollY) {
                         outter.requestDisallowInterceptTouchEvent(false);
                     }

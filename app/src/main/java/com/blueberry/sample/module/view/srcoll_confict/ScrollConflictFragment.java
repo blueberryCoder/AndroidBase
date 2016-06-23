@@ -11,12 +11,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.blueberry.sample.common.BaseFragment;
-import com.blueberry.sample.widget.HorizontalEx;
-import com.blueberry.sample.widget.HorizontalEx2;
-import com.blueberry.sample.widget.ListViewEx;
-import com.blueberry.sample.widget.refresh.RefreshLayoutBase;
-import com.blueberry.sample.widget.refresh.RefreshLayoutBase2;
-import com.blueberry.sample.widget.refresh.RefreshListView;
+import com.blueberry.sample.widgets.HorizontalEx;
+import com.blueberry.sample.widgets.HorizontalEx2;
+import com.blueberry.sample.widgets.ListViewEx;
+import com.blueberry.sample.widgets.refresh.RefreshLayoutBase;
+import com.blueberry.sample.widgets.refresh.RefreshLayoutBase2;
+import com.blueberry.sample.widgets.refresh.RefreshListView;
 
 import java.util.List;
 
