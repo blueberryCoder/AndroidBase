@@ -9,10 +9,15 @@ import com.blueberry.sample.R;
 import com.blueberry.sample.common.BaseActivity;
 import com.blueberry.sample.common.BasePresenter;
 import com.blueberry.sample.module.drawable.fg.BitmapFragment;
+import com.blueberry.sample.module.drawable.fg.ClipDrawableFragment;
+import com.blueberry.sample.module.drawable.fg.InsetDrawableFragment;
 import com.blueberry.sample.module.drawable.fg.LayerListFragment;
 import com.blueberry.sample.module.drawable.fg.LevelListFragment;
 import com.blueberry.sample.module.drawable.fg.NinePatchFragment;
+import com.blueberry.sample.module.drawable.fg.ScaleDrawableFragment;
+import com.blueberry.sample.module.drawable.fg.ShapeDrawableFragment;
 import com.blueberry.sample.module.drawable.fg.StateListFragment;
+import com.blueberry.sample.module.drawable.fg.TransitionDrawableFragment;
 
 import butterknife.BindView;
 
@@ -66,12 +71,20 @@ public class DrawableActivity extends BaseActivity {
                 fragment = LevelListFragment.newInstance();
                 break;
             case 5:
+                fragment = TransitionDrawableFragment.newInstance();
                 break;
-            case 6:break;
-            case 7:break;
-            case 8:break;
-            case 9:break;
-            case 10:break;
+            case 6:
+                fragment = InsetDrawableFragment.newInstance();
+                break;
+            case 7:
+                fragment = ClipDrawableFragment.newInstance();
+                break;
+            case 8:
+                fragment = ScaleDrawableFragment.newInstance();
+                break;
+            case 9:
+                fragment = ShapeDrawableFragment.newInstance();
+                break;
         }
 
         getSupportFragmentManager().beginTransaction()
