@@ -5,12 +5,13 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
     <application
+        android:name="com.blueberry.sample.app.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name="com.blueberry.sample.app.App"
         android:theme="@style/AppTheme">
         <activity android:name="com.blueberry.sample.module.home.HomeActivity">
             <intent-filter>
@@ -19,16 +20,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.blueberry.sample.module.PageActivity"
-            android:label="页面"
-            >
-        </activity>
+        <activity
+            android:name="com.blueberry.sample.module.PageActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="页面"></activity>
 
-        <activity android:name=".module.view.srcoll_confict.ScrollConflictActivity"
-            android:label="滑动冲突"
-            >
+        <activity
+            android:name=".module.view.srcoll_confict.ScrollConflictActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="滑动冲突"></activity>
 
-        </activity>
+        <activity
+            android:name=".module.drawable.DrawableActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="Drawable"></activity>
+
+
+        <receiver android:name=".widgets.MyAppWidget">
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_provider_info"></meta-data>
+
+            <intent-filter>
+                <action android:name="com.blueberry.sample.appwidget_CLICK"></action>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"></action>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

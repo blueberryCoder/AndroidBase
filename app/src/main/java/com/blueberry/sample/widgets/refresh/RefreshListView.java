@@ -43,7 +43,8 @@ public class RefreshListView extends RefreshLayoutBase<ListView> {
             }
 
             @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+            public void onScroll(AbsListView view, int firstVisibleItem,
+                                 int visibleItemCount, int totalItemCount) {
 
                 /*这里存在一个bug: 当listView滑动到底部的时候，如果下拉也会出现footer
                 * 这是因为，暂时还没有想到如何判断是下拉还是上拉。

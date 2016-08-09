@@ -15,7 +15,7 @@ public class HomePresenter extends BasePresenter<HomeView> {
      * @return
      */
     private List<HomeData> loadData() {
-        return HomeData.datas ;
+        return HomeData.data;
     }
 
     /**

@@ -152,7 +152,8 @@ public class HorizontalEx extends ViewGroup {
             case MotionEvent.ACTION_UP:
                 int scrollX = getScrollX();
                 final int childWidth = getChildAt(0).getWidth();
-                mVelocityTracker.computeCurrentVelocity(1000, configuration.getScaledMaximumFlingVelocity());
+                mVelocityTracker.computeCurrentVelocity(1000,
+                        configuration.getScaledMaximumFlingVelocity());
                 float xVelocity = mVelocityTracker.getXVelocity();
                 if (Math.abs(xVelocity) > configuration.getScaledMinimumFlingVelocity()) {
                     childIndex = xVelocity < 0 ? childIndex + 1 : childIndex - 1;

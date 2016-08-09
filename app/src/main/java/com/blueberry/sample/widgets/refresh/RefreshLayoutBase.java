@@ -165,7 +165,8 @@ public abstract class RefreshLayoutBase<T extends View> extends ViewGroup {
         int topOffset = 0;
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
-            child.layout(getPaddingLeft(), getPaddingTop() + topOffset, r, getPaddingTop() + child.getMeasuredHeight() + topOffset);
+            child.layout(getPaddingLeft(), getPaddingTop() + topOffset, r,
+                    getPaddingTop() + child.getMeasuredHeight() + topOffset);
             topOffset += child.getMeasuredHeight();
         }
         mInitScrollY = mHeadView.getMeasuredHeight() + getPaddingTop();

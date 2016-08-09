@@ -36,7 +36,8 @@ public class ThreadsFragment extends BaseFragment<IThreads,ThreadPresenter> impl
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_thread, null);
         ButterKnife.bind(this, view);
         presenter.loadHtml();

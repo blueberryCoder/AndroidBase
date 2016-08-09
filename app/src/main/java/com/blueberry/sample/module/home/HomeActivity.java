@@ -30,8 +30,10 @@ public class HomeActivity extends BaseActivity<HomeView, HomePresenter> implemen
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        mRecyclerView.addItemDecoration(new ListItemDecoration(this, LinearLayoutManager.VERTICAL));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this,
+                LinearLayoutManager.VERTICAL, false));
+        mRecyclerView.addItemDecoration(new ListItemDecoration(this,
+                LinearLayoutManager.VERTICAL));
         presenter.gainData();
     }
 
@@ -66,17 +68,17 @@ public class HomeActivity extends BaseActivity<HomeView, HomePresenter> implemen
         homeAdapter.setmOnItemClickListener(new HomeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int pos, int id) {
-                Intent intent  = new Intent(HomeActivity.this, PageActivity.class);
+                Intent intent = new Intent(HomeActivity.this, PageActivity.class);
                 switch (id) {
                     case 0:
                         //多线程分析
                         Logger.d("click id : " + 0);
-                        intent.putExtra(PageActivity.FRAGMENT_ID_INTENT_KEY,id);
+                        intent.putExtra(PageActivity.FRAGMENT_ID_INTENT_KEY, id);
                         startActivity(intent);
                         break;
                     case 1:
                         Logger.d("click id : " + 1);
-                        intent.putExtra(PageActivity.FRAGMENT_ID_INTENT_KEY,id);
+                        intent.putExtra(PageActivity.FRAGMENT_ID_INTENT_KEY, id);
                         startActivity(intent);
                         break;
                     case 2:
@@ -89,6 +91,16 @@ public class HomeActivity extends BaseActivity<HomeView, HomePresenter> implemen
                     case 5:
                         break;
                     case 6:
+                        break;
+                    case 7:
+                        break;
+                    case 8:
+                        intent.putExtra(PageActivity.FRAGMENT_ID_INTENT_KEY, id);
+                        startActivity(intent);
+                        break;
+                    case 9:
+                        intent.putExtra(PageActivity.FRAGMENT_ID_INTENT_KEY, id);
+                        startActivity(intent);
                         break;
                 }
             }

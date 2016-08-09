@@ -90,7 +90,8 @@ public class RefreshLayoutBase2 extends ViewGroup {
         int topOffset = 0;
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
-            child.layout(getPaddingLeft(), getPaddingTop() + topOffset, r, getPaddingTop() + child.getMeasuredHeight() + topOffset);
+            child.layout(getPaddingLeft(), getPaddingTop() + topOffset, r,
+                    getPaddingTop() + child.getMeasuredHeight() + topOffset);
             topOffset += child.getMeasuredHeight();
         }
         mInitScrollY = headView.getMeasuredHeight() + getPaddingTop();
@@ -140,16 +141,19 @@ public class RefreshLayoutBase2 extends ViewGroup {
     private void setupHeadView(Context context) {
         headView = (ViewGroup) View.inflate(context, R.layout.fresh_head_view, null);
         headView.setBackgroundColor(Color.RED);
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 300);
+        ViewGroup.LayoutParams params =
+                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 300);
         addView(headView, params);
     }
 
     public void setupContentView(Context context) {
         lv = new ListViewEx(context, this);
         lv.setBackgroundColor(Color.BLUE);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, datas);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_list_item_1, datas);
         lv.setAdapter(adapter);
-        addView(lv, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        addView(lv, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
     }
 
     @Override

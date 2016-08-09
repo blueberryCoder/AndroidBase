@@ -29,7 +29,8 @@ import rx.schedulers.Schedulers;
 /**
  * Created by blueberry on 2016/6/20.
  */
-public class ScrollConflictFragment extends BaseFragment<IScrollConflict, ScrollConflictPresenter> implements IScrollConflict {
+public class ScrollConflictFragment extends BaseFragment<IScrollConflict, ScrollConflictPresenter>
+        implements IScrollConflict {
 
     private static final String TAG = "ScrollConflictFragment";
 

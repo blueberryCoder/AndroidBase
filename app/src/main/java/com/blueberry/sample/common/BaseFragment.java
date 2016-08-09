@@ -7,7 +7,8 @@ import android.support.v4.app.Fragment;
 /**
  * Created by blueberry on 2016/5/20.
  */
-public abstract class  BaseFragment<V extends BaseView,P extends BasePresenter <V>> extends Fragment{
+public abstract class  BaseFragment<V extends BaseView,
+        P extends BasePresenter <V>> extends Fragment{
 
     protected P presenter ;
 

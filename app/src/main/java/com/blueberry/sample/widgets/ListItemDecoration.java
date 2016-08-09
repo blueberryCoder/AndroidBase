@@ -16,15 +16,16 @@ public class ListItemDecoration extends RecyclerView.ItemDecoration {
 
     private Drawable mDrawable;
 
-    private final static int DEFAULT_ORITATION = LinearLayoutManager.VERTICAL;
+    private final static int DEFAULT_ORIENTATION = LinearLayoutManager.VERTICAL;
 
-    private int mOritation;
+    private int mOrientation;
 
-    public ListItemDecoration(Context context, int oritation) {
-        if (oritation != LinearLayoutManager.HORIZONTAL && oritation != LinearLayoutManager.VERTICAL) {
-            this.mOritation = DEFAULT_ORITATION;
+    public ListItemDecoration(Context context, int orientation) {
+        if (orientation != LinearLayoutManager.HORIZONTAL
+                && orientation != LinearLayoutManager.VERTICAL) {
+            this.mOrientation = DEFAULT_ORIENTATION;
         } else {
-            this.mOritation = oritation;
+            this.mOrientation = orientation;
         }
         final TypedArray a = context.obtainStyledAttributes(new int[]{
                 android.R.attr.listDivider
@@ -36,7 +37,7 @@ public class ListItemDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
         super.onDraw(c, parent, state);
-        if(mOritation ==LinearLayoutManager.HORIZONTAL){
+        if(mOrientation ==LinearLayoutManager.HORIZONTAL){
             drawHorizontal(c,parent);
         }else{
             drawVertical(c,parent);
@@ -59,7 +60,6 @@ public class ListItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     private void drawHorizontal(Canvas c, RecyclerView parent) {
-
         int top = parent.getPaddingTop() ;
         int bottom = parent.getHeight() -parent.getPaddingBottom();
         int childCount = parent.getChildCount() ;
@@ -74,7 +74,8 @@ public class ListItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     @Override
-    public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+    public void getItemOffsets(Rect outRect, View view, RecyclerView parent,
+                               RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
     }
 }
