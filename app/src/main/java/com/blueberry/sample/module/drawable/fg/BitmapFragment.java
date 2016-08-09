@@ -9,7 +9,6 @@ import android.widget.ImageView;
 
 import com.blueberry.sample.R;
 import com.blueberry.sample.common.BaseFragment;
-import com.blueberry.sample.common.BasePresenter;
 
 /**
  * Created by blueberry on 2016/8/8.
@@ -37,8 +36,5 @@ public class BitmapFragment extends BaseFragment {
         return iv;
     }
 
-    @Override
-    protected BasePresenter createPresenter() {
-        return null;
-    }
+
 }

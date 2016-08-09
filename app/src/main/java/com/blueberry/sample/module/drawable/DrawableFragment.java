@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 
 import com.blueberry.sample.R;
 import com.blueberry.sample.common.BaseFragment;
-import com.blueberry.sample.common.BasePresenter;
 import com.blueberry.sample.common.BaseRvAdapter;
 import com.blueberry.sample.module.drawable.adapter.DrawableRvAdapter;
 import com.blueberry.sample.widgets.ListItemDecoration;
@@ -69,8 +68,5 @@ public class DrawableFragment extends BaseFragment {
         });
     }
 
-    @Override
-    protected BasePresenter createPresenter() {
-        return null;
-    }
+
 }

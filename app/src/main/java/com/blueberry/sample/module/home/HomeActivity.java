@@ -6,11 +6,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.orhanobut.logger.Logger;
-import com.blueberry.sample.common.BaseActivity;
 import com.blueberry.sample.R;
-import com.blueberry.sample.module.home.data.HomeData;
+import com.blueberry.sample.common.BaseActivity;
 import com.blueberry.sample.module.PageActivity;
+import com.blueberry.sample.module.home.data.HomeData;
 import com.blueberry.sample.widgets.ListItemDecoration;
 
 import java.util.List;
@@ -20,7 +19,7 @@ import butterknife.BindView;
 /**
  * Created by blueberry on 2016/5/6.
  */
-public class HomeActivity extends BaseActivity<HomeView, HomePresenter> implements HomeView {
+public class HomeActivity extends BaseActivity{
 
     private static final String TAG = "HomeActivity";
 
@@ -34,30 +33,18 @@ public class HomeActivity extends BaseActivity<HomeView, HomePresenter> implemen
                 LinearLayoutManager.VERTICAL, false));
         mRecyclerView.addItemDecoration(new ListItemDecoration(this,
                 LinearLayoutManager.VERTICAL));
-        presenter.gainData();
+        HomeAdapter homeAdapter = new HomeAdapter(this, HomeData.getData());
+        mRecyclerView.setAdapter(homeAdapter);
+        setListener(homeAdapter);
     }
 
-    @Override
-    protected HomePresenter createPresenter() {
-        return new HomePresenter();
-    }
 
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_home;
     }
 
-    /**
-     * 显示数据
-     *
-     * @param datas 数据源
-     */
-    @Override
-    public void showData(List<HomeData> datas) {
-        HomeAdapter homeAdapter = new HomeAdapter(this, datas);
-        mRecyclerView.setAdapter(homeAdapter);
-        setListener(homeAdapter);
-    }
+
 
     /**
      * 处理点击事件
@@ -72,17 +59,16 @@ public class HomeActivity extends BaseActivity<HomeView, HomePresenter> implemen
                 switch (id) {
                     case 0:
                         //多线程分析
-                        Logger.d("click id : " + 0);
                         intent.putExtra(PageActivity.FRAGMENT_ID_INTENT_KEY, id);
                         startActivity(intent);
                         break;
                     case 1:
-                        Logger.d("click id : " + 1);
                         intent.putExtra(PageActivity.FRAGMENT_ID_INTENT_KEY, id);
                         startActivity(intent);
                         break;
                     case 2:
-                        Logger.d("click id : " + 2);
+                        intent.putExtra(PageActivity.FRAGMENT_ID_INTENT_KEY, id);
+                        startActivity(intent);
                         break;
                     case 3:
                         break;
@@ -99,8 +85,9 @@ public class HomeActivity extends BaseActivity<HomeView, HomePresenter> implemen
                         startActivity(intent);
                         break;
                     case 9:
-                        intent.putExtra(PageActivity.FRAGMENT_ID_INTENT_KEY, id);
-                        startActivity(intent);
+
+//                        intent.putExtra(PageActivity.FRAGMENT_ID_INTENT_KEY, id);
+//                        startActivity(intent);
                         break;
                 }
             }

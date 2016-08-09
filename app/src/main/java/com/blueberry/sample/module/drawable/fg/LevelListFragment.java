@@ -9,7 +9,6 @@ import android.widget.ImageView;
 
 import com.blueberry.sample.R;
 import com.blueberry.sample.common.BaseFragment;
-import com.blueberry.sample.common.BasePresenter;
 import com.blueberry.sample.utils.Async;
 
 /**
@@ -42,8 +41,5 @@ public class LevelListFragment extends BaseFragment {
         return iv;
     }
 
-    @Override
-    protected BasePresenter createPresenter() {
-        return null;
-    }
+
 }

@@ -7,7 +7,6 @@ import android.widget.FrameLayout;
 
 import com.blueberry.sample.R;
 import com.blueberry.sample.common.BaseActivity;
-import com.blueberry.sample.common.BasePresenter;
 import com.blueberry.sample.module.drawable.fg.BitmapFragment;
 import com.blueberry.sample.module.drawable.fg.ClipDrawableFragment;
 import com.blueberry.sample.module.drawable.fg.InsetDrawableFragment;
@@ -33,10 +32,7 @@ public class DrawableActivity extends BaseActivity {
     @BindView(R.id.fragment_container)
     FrameLayout fragmentContainer;
 
-    @Override
-    protected BasePresenter createPresenter() {
-        return null;
-    }
+
 
     @Override
     protected int getLayoutResId() {

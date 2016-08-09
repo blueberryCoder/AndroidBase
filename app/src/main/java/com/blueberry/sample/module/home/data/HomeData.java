@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class HomeData {
 
-    public static List<HomeData> data = new ArrayList<>();
+    private static List<HomeData> data = new ArrayList<>();
 
     static {
         data.add(new HomeData(0, "android 多线程分析", null));
@@ -20,7 +20,7 @@ public class HomeData {
         data.add(new HomeData(6, "java 1.8 新特性分析", null));
         data.add(new HomeData(7, "android 屏幕适配", null));
         data.add(new HomeData(8, "通知", null));
-        data.add(new HomeData(9, "Drawable", null));
+        data.add(new HomeData(9, "动画", null));
     }
 
     /**

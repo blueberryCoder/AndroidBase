@@ -3,9 +3,8 @@ package com.blueberry.sample.module;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import com.blueberry.sample.common.BaseActivity;
-import com.blueberry.sample.common.BasePresenter;
 import com.blueberry.sample.R;
+import com.blueberry.sample.common.BaseActivity;
 import com.blueberry.sample.module.drawable.DrawableFragment;
 import com.blueberry.sample.module.notify.NotifyFragment;
 import com.blueberry.sample.module.threads.ThreadsFragment;
@@ -17,11 +16,6 @@ import com.blueberry.sample.module.view.ViewFragment;
 public class PageActivity extends BaseActivity {
 
     public static final String FRAGMENT_ID_INTENT_KEY = "fragment_key";
-
-    @Override
-    protected BasePresenter createPresenter() {
-        return null;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,12 +32,13 @@ public class PageActivity extends BaseActivity {
             case 1:
                 fragment = ViewFragment.newInstance();
                 break;
+            case 2:
+                fragment = DrawableFragment.newInstance();
+                break;
             case 8:
                 fragment = NotifyFragment.newInstance();
                 break;
-            case 9:
-                fragment = DrawableFragment.newInstance();
-                break;
+
         }
         getSupportFragmentManager().beginTransaction()
                 .replace(android.R.id.content, fragment)

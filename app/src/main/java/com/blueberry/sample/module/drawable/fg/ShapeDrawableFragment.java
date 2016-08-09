@@ -2,7 +2,6 @@ package com.blueberry.sample.module.drawable.fg;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
 import com.blueberry.sample.R;
+import com.blueberry.sample.common.BaseFragment;
 
 /**
  * Created by blueberry on 2016/8/9.
  */
-public class ShapeDrawableFragment extends Fragment {
+public class ShapeDrawableFragment extends BaseFragment {
     public static ShapeDrawableFragment newInstance() {
 
         Bundle args = new Bundle();

@@ -18,6 +18,7 @@ import com.blueberry.sample.widgets.refresh.RefreshLayoutBase;
 import com.blueberry.sample.widgets.refresh.RefreshLayoutBase2;
 import com.blueberry.sample.widgets.refresh.RefreshListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
@@ -29,8 +30,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by blueberry on 2016/6/20.
  */
-public class ScrollConflictFragment extends BaseFragment<IScrollConflict, ScrollConflictPresenter>
-        implements IScrollConflict {
+public class ScrollConflictFragment extends BaseFragment {
 
     private static final String TAG = "ScrollConflictFragment";
 
@@ -66,18 +66,33 @@ public class ScrollConflictFragment extends BaseFragment<IScrollConflict, Scroll
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = null;
+        List<String> data1 = new ArrayList<>();
+        List<String> data2 = new ArrayList<>();
+        List<String> data3 = new ArrayList<>();
+        for (int i = 0; i < 40; i++) {
+            String str1 = "列表1——" + i;
+            String str2 = "列表2__" + i;
+            String str3 = "列表3__" + i;
+            data1.add(str1);
+            data2.add(str2);
+            data3.add(str3);
+        }
+
         switch (code) {
             case OUT_HV:
                 mHorizontalEx = new HorizontalEx(getContext());
                 root = mHorizontalEx;
+                showOutHVData(data1,data2,data3);
                 break;
             case OUT_VV:
                 mRefreshListView = new RefreshListView(getContext());
                 root = mRefreshListView;
+                showOutVVData(data1);
                 break;
             case INNER_HV:
                 mHorizontalEx2 = new HorizontalEx2(getContext());
                 root = mHorizontalEx2;
+                showInnerHVData(data1,data2,data3);
                 break;
             case INNER_VV:
                 mRefreshListView2 = new RefreshLayoutBase2(getContext()) ;
@@ -85,30 +100,27 @@ public class ScrollConflictFragment extends BaseFragment<IScrollConflict, Scroll
                 break;
         }
 
-        presenter.loadOutHVData();
-        presenter.loadInnerHVData();
-        presenter.laodOutVVData();
+
         return root;
     }
 
-    @Override
-    protected ScrollConflictPresenter createPresenter() {
-        return new ScrollConflictPresenter();
-    }
 
-    @Override
+
     public void showOutHVData(List<String> data1, List<String> data2, List<String> data3) {
         if (code != OUT_HV) return;
         ListView listView1 = new ListView(getContext());
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, data1);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_list_item_1, data1);
         listView1.setAdapter(adapter1);
 
         ListView listView2 = new ListView(getContext());
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, data2);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_list_item_1, data2);
         listView2.setAdapter(adapter2);
 
         ListView listView3 = new ListView(getContext());
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, data3);
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_list_item_1, data3);
         listView3.setAdapter(adapter3);
 
         ViewGroup.LayoutParams params
@@ -120,21 +132,24 @@ public class ScrollConflictFragment extends BaseFragment<IScrollConflict, Scroll
         mHorizontalEx.addView(listView3, params);
     }
 
-    @Override
     public void showInnerHVData(List<String> data1, List<String> data2, List<String> data3) {
         if (code != INNER_HV) return;
         ListViewEx listView1 = new ListViewEx(getContext());
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, data1);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_list_item_1, data1);
         listView1.setAdapter(adapter1);
         listView1.setmHorizontalEx2(mHorizontalEx2);
 
         ListViewEx listView2 = new ListViewEx(getContext());
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, data2);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_list_item_1, data2);
         listView2.setAdapter(adapter2);
         listView2.setmHorizontalEx2(mHorizontalEx2);
 
+
         ListViewEx listView3 = new ListViewEx(getContext());
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, data3);
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_list_item_1, data3);
         listView3.setAdapter(adapter3);
         listView3.setmHorizontalEx2(mHorizontalEx2);
 
@@ -147,12 +162,11 @@ public class ScrollConflictFragment extends BaseFragment<IScrollConflict, Scroll
         mHorizontalEx2.addView(listView3, params);
     }
 
-
-    @Override
     public void showOutVVData(List<String> data1) {
         if (code != OUT_VV) return;
         ListView listView = new ListView(getContext());
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, data1);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_list_item_1, data1);
         listView.setAdapter(adapter1);
         mRefreshListView.setListView(listView);
         mRefreshListView.setOnRefreshListener(new RefreshLayoutBase.OnRefreshListener() {

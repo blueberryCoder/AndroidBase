@@ -10,13 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.orhanobut.logger.Logger;
-import com.blueberry.sample.common.BaseFragment;
 import com.blueberry.sample.R;
+import com.blueberry.sample.common.BaseFragment;
 import com.blueberry.sample.module.view.data.ViewBean;
 import com.blueberry.sample.module.view.srcoll_confict.ScrollConflictActivity;
 import com.blueberry.sample.widgets.SpaceItemDecoration;
+import com.orhanobut.logger.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -26,7 +27,7 @@ import butterknife.ButterKnife;
 /**
  * 自定义View
  */
-public class ViewFragment extends BaseFragment<IView, ViewPresenter> implements IView {
+public class ViewFragment extends BaseFragment {
 
     @BindView(R.id.fg_view_recycleview)
     RecyclerView mRecycleView;
@@ -42,33 +43,40 @@ public class ViewFragment extends BaseFragment<IView, ViewPresenter> implements 
         return fragment;
     }
 
-    @Override
-    protected ViewPresenter createPresenter() {
-        return new ViewPresenter();
-    }
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_view, container, false);
         ButterKnife.bind(this, root);
-        presenter.loadData();
         initView();
         return root;
     }
 
     private void initView() {
-        mRecycleView.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL));
+        mRecycleView.setLayoutManager(new StaggeredGridLayoutManager(2,
+                LinearLayoutManager.VERTICAL));
         mRecycleView.addItemDecoration(new SpaceItemDecoration(16, 2));
-    }
 
-
-    @Override
-    public void showData(List<ViewBean> datas) {
+        List<ViewBean> datas = new ArrayList<>();
+        datas.add(new ViewBean(1,"滑动冲突"));
+        datas.add(new ViewBean(2,"事件分发机制"));
+        datas.add(new ViewBean(3,"未实现")) ;
+        datas.add(new ViewBean(3,"未实现")) ;
+        datas.add(new ViewBean(3,"未实现")) ;
+        datas.add(new ViewBean(3,"未实现")) ;
+        datas.add(new ViewBean(3,"未实现")) ;
+        datas.add(new ViewBean(3,"未实现")) ;
+        datas.add(new ViewBean(3,"未实现")) ;
+        datas.add(new ViewBean(3,"未实现")) ;
         adapter = new ViewRecycleViewAdapter(getContext(), datas);
         adapter.setmOnItemClickListener(onItemClickListener);
         mRecycleView.setAdapter(adapter);
     }
+
+
+
 
     private ViewRecycleViewAdapter.OnItemClickListener onItemClickListener = new ViewRecycleViewAdapter.OnItemClickListener() {
         @Override

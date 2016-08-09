@@ -9,26 +9,15 @@ import butterknife.ButterKnife;
 /**
  * Created by blueberry on 2016/5/5.
  */
-public  abstract  class BaseActivity<V extends BaseView,P extends BasePresenter<V >>  extends AppCompatActivity {
-    
-    protected  P  presenter ;
+public  abstract  class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResId());
         ButterKnife.bind(this) ;
-        presenter = createPresenter() ;
-        if(presenter!=null)
-        presenter.attachView((V)this);
     }
 
-    /**
-     * factory method
-     * 获得presentor
-     * @return
-     */
-    protected abstract P createPresenter();
 
     /**
      * layout id
@@ -36,10 +25,5 @@ public  abstract  class BaseActivity<V extends BaseView,P extends BasePresenter<
      */
     protected abstract int getLayoutResId() ;
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if(presenter !=null)
-        presenter.detachView();
-    }
+
 }

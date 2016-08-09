@@ -9,9 +9,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.orhanobut.logger.Logger;
-import com.blueberry.sample.common.BaseFragment;
 import com.blueberry.sample.R;
+import com.blueberry.sample.common.BaseFragment;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 /**
  * Created by blueberry on 2016/5/20.
  */
-public class ThreadsFragment extends BaseFragment<IThreads,ThreadPresenter> implements IThreads {
+public class ThreadsFragment extends BaseFragment {
 
     @BindView(R.id.thread_webview)
     WebView mWebView;
@@ -40,7 +40,7 @@ public class ThreadsFragment extends BaseFragment<IThreads,ThreadPresenter> impl
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_thread, null);
         ButterKnife.bind(this, view);
-        presenter.loadHtml();
+        setupWebView("http://blog.csdn.net/a992036795/article/details/51362487");
         return view;
     }
 
@@ -61,17 +61,5 @@ public class ThreadsFragment extends BaseFragment<IThreads,ThreadPresenter> impl
 
     }
 
-    @Override
-    protected ThreadPresenter createPresenter() {
-        return new ThreadPresenter();
-    }
 
-    /**
-     * 显示网页
-     * @param url
-     */
-    @Override
-    public void showHtml(String url) {
-        setupWebView(url);
-    }
 }

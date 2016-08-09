@@ -9,7 +9,6 @@ import android.widget.Button;
 
 import com.blueberry.sample.R;
 import com.blueberry.sample.common.BaseFragment;
-import com.blueberry.sample.common.BasePresenter;
 
 /**
  * Created by blueberry on 2016/8/8.
@@ -36,8 +35,5 @@ public class StateListFragment extends BaseFragment {
         return btn;
     }
 
-    @Override
-    protected BasePresenter createPresenter() {
-        return null;
-    }
+
 }

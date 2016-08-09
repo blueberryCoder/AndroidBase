@@ -20,10 +20,7 @@ public class ScrollConflictActivity extends BaseActivity {
         return R.layout.activity_view_srcoll_confict;
     }
 
-    @Override
-    protected ScrollConflictPresenter createPresenter() {
-        return null;
-    }
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
