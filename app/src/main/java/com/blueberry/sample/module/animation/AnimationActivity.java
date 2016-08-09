@@ -4,11 +4,16 @@ import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.blueberry.sample.R;
 import com.blueberry.sample.common.BaseActivity;
@@ -36,6 +41,13 @@ public class AnimationActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_animator);
         ButterKnife.bind(this);
+        LinearLayout root =(LinearLayout) findViewById(R.id.root);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.anim_item);
+        LayoutAnimationController controller = new LayoutAnimationController(animation);
+        controller.setDelay(0.5f);
+        controller.setOrder(LayoutAnimationController.ORDER_NORMAL);
+        root.setLayoutAnimation(controller);
+
 //
 //        ValueAnimator valueAnimator = ValueAnimator.ofInt(0, 200);
 //        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -88,9 +100,21 @@ public class AnimationActivity extends BaseActivity {
                 set.setDuration(5000).start();
                 break;
             case R.id.btn_tween:
+
+                Animation animation = AnimationUtils
+                        .loadAnimation(AnimationActivity.this, R.anim.anim);
+                ivTarget.startAnimation(animation);
                 break;
             case R.id.btn_frame:
+                ivTarget.setBackgroundDrawable(getResources().getDrawable(R.drawable.frame_anim));
+                ((AnimationDrawable) ivTarget.getBackground()).start();
                 break;
         }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.enter_anim,R.anim.exit_anim);
     }
 }

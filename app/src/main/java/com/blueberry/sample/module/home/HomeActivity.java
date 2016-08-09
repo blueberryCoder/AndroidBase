@@ -84,6 +84,7 @@ public class HomeActivity extends BaseActivity{
                     case 9:
                         Intent intent1  = new Intent(HomeActivity.this, AnimationActivity.class);
                         startActivity(intent1);
+                        overridePendingTransition(R.anim.enter_anim,R.anim.exit_anim);
                         break;
                 }
             }
