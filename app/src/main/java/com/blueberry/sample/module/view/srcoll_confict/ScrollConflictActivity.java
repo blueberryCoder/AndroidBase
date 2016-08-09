@@ -8,6 +8,7 @@ import com.orhanobut.logger.Logger;
 import com.blueberry.sample.R;
 import com.blueberry.sample.common.BaseActivity;
 
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -16,16 +17,10 @@ import butterknife.OnClick;
 public class ScrollConflictActivity extends BaseActivity {
 
     @Override
-    protected int getLayoutResId() {
-        return R.layout.activity_view_srcoll_confict;
-    }
-
-
-
-    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_view_srcoll_confict);
+        ButterKnife.bind(this);
     }
 
     @OnClick({R.id.btn_out_scroll_hv, R.id.btn_out_scroll_vv

@@ -20,6 +20,7 @@ public class PageActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_page);
         startFragment();
     }
 
@@ -45,10 +46,7 @@ public class PageActivity extends BaseActivity {
                 .commitAllowingStateLoss();
     }
 
-    @Override
-    protected int getLayoutResId() {
-        return R.layout.activity_page;
-    }
+
 
     private int getFragmentId() {
         return getIntent().getIntExtra(FRAGMENT_ID_INTENT_KEY, 0);

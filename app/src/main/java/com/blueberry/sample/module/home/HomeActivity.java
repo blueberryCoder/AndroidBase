@@ -9,12 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import com.blueberry.sample.R;
 import com.blueberry.sample.common.BaseActivity;
 import com.blueberry.sample.module.PageActivity;
+import com.blueberry.sample.module.animation.AnimationActivity;
 import com.blueberry.sample.module.home.data.HomeData;
 import com.blueberry.sample.widgets.ListItemDecoration;
 
-import java.util.List;
-
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by blueberry on 2016/5/6.
@@ -29,6 +29,8 @@ public class HomeActivity extends BaseActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+        ButterKnife.bind(this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL, false));
         mRecyclerView.addItemDecoration(new ListItemDecoration(this,
@@ -38,11 +40,6 @@ public class HomeActivity extends BaseActivity{
         setListener(homeAdapter);
     }
 
-
-    @Override
-    protected int getLayoutResId() {
-        return R.layout.activity_home;
-    }
 
 
 
@@ -85,9 +82,8 @@ public class HomeActivity extends BaseActivity{
                         startActivity(intent);
                         break;
                     case 9:
-
-//                        intent.putExtra(PageActivity.FRAGMENT_ID_INTENT_KEY, id);
-//                        startActivity(intent);
+                        Intent intent1  = new Intent(HomeActivity.this, AnimationActivity.class);
+                        startActivity(intent1);
                         break;
                 }
             }

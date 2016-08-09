@@ -35,6 +35,11 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="Drawable"></activity>
 
+        <activity
+            android:name=".module.animation.AnimationActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="动画"></activity>
+
 
         <receiver android:name=".widgets.MyAppWidget">
             <meta-data

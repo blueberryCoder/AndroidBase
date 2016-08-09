@@ -19,6 +19,7 @@ import com.blueberry.sample.module.drawable.fg.StateListFragment;
 import com.blueberry.sample.module.drawable.fg.TransitionDrawableFragment;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by blueberry on 2016/8/8.
@@ -32,16 +33,11 @@ public class DrawableActivity extends BaseActivity {
     @BindView(R.id.fragment_container)
     FrameLayout fragmentContainer;
 
-
-
-    @Override
-    protected int getLayoutResId() {
-        return R.layout.act_drawable;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.act_drawable);
+        ButterKnife.bind(this) ;
         curId = getIntent().getIntExtra(ID_KEY, 0);
         createFragment();
 
