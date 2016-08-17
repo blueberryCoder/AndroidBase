@@ -31,11 +31,8 @@ public class NetworkExecutor extends Thread {
     public void run() {
         try {
             while (!isStop) {
-                Log.i(TAG, "before request：");
                 final Request<?> request = mRequestQueue.take();
-                Log.i(TAG, "run: request："+request);
                 if (request.isCancel) {
-                    Log.d(TAG, "取消执行了");
                     continue;
                 }
 
