@@ -54,7 +54,7 @@ public class AnimationActivity extends BaseActivity {
 //            /*一个Int 估值器*/
 //            private IntEvaluator mEvaluator =new IntEvaluator();
 //
-//            @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+//            @TargetApi(Builder.VERSION_CODES.ICE_CREAM_SANDWICH)
 //            @Override
 //            public void onAnimationUpdate(ValueAnimator animation) {
 //                /*这里的值将从 0  --- 200*/

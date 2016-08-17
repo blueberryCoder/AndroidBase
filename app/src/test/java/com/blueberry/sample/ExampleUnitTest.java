@@ -7,7 +7,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 /**
- * To work on unit tests, switch the Test Artifact in the Build Variants view.
+ * To work on unit tests, switch the Test Artifact in the Builder Variants view.
  */
 public class ExampleUnitTest {
     @Test

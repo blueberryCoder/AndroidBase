@@ -32,7 +32,7 @@ public class LevelListFragment extends BaseFragment {
         iv.setBackgroundDrawable(getActivity()
                 .getResources().getDrawable(R.drawable.level_list));
         iv.getBackground().setLevel(200);
-        Async.runOnMainThreadDelayed(new Runnable() {
+        Async.runOnMainThread(new Runnable() {
             @Override
             public void run() {
                 iv.getBackground().setLevel(800);

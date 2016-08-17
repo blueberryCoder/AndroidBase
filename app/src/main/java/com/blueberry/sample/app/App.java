@@ -8,7 +8,6 @@ import com.orhanobut.logger.Logger;
 /**
  * Created by blueberry on 2016/5/5.
  * <p/>
- * <p/>
  * app
  */
 public class App extends Application {

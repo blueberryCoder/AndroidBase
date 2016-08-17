@@ -6,6 +6,12 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <uses-feature android:name="android.hardware.camera"></uses-feature>
+    <uses-feature android:name="android.hardware.camera.autofocus"></uses-feature>
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:name="com.blueberry.sample.app.App"
         android:allowBackup="true"
@@ -40,6 +46,14 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="动画"></activity>
 
+        <activity
+            android:name=".module.camera.CameraActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="Camera"></activity>
+        <activity
+            android:name=".module.http.HttpActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="Camera"></activity>
 
         <receiver android:name=".widgets.MyAppWidget">
             <meta-data

@@ -12,7 +12,7 @@ public class Async {
         new android.os.Handler(Looper.getMainLooper()).postDelayed(run,0);
     }
 
-    public static void runOnMainThreadDelayed(Runnable run,long delayed){
+    public static void runOnMainThread(Runnable run, long delayed){
         new android.os.Handler(Looper.getMainLooper()).postDelayed(run,delayed);
     }
 }

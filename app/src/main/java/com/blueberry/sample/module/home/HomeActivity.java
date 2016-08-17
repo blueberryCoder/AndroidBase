@@ -10,7 +10,9 @@ import com.blueberry.sample.R;
 import com.blueberry.sample.common.BaseActivity;
 import com.blueberry.sample.module.PageActivity;
 import com.blueberry.sample.module.animation.AnimationActivity;
+import com.blueberry.sample.module.camera.CameraActivity;
 import com.blueberry.sample.module.home.data.HomeData;
+import com.blueberry.sample.module.http.HttpActivity;
 import com.blueberry.sample.widgets.ListItemDecoration;
 
 import butterknife.BindView;
@@ -19,7 +21,7 @@ import butterknife.ButterKnife;
 /**
  * Created by blueberry on 2016/5/6.
  */
-public class HomeActivity extends BaseActivity{
+public class HomeActivity extends BaseActivity {
 
     private static final String TAG = "HomeActivity";
 
@@ -39,8 +41,6 @@ public class HomeActivity extends BaseActivity{
         mRecyclerView.setAdapter(homeAdapter);
         setListener(homeAdapter);
     }
-
-
 
 
     /**
@@ -82,9 +82,17 @@ public class HomeActivity extends BaseActivity{
                         startActivity(intent);
                         break;
                     case 9:
-                        Intent intent1  = new Intent(HomeActivity.this, AnimationActivity.class);
+                        Intent intent1 = new Intent(HomeActivity.this, AnimationActivity.class);
                         startActivity(intent1);
-                        overridePendingTransition(R.anim.enter_anim,R.anim.exit_anim);
+                        overridePendingTransition(R.anim.enter_anim, R.anim.exit_anim);
+                        break;
+                    case 10:
+                        Intent intent2 = new Intent(HomeActivity.this, CameraActivity.class);
+                        startActivity(intent2);
+                        break;
+                    case 11:
+                        Intent intent3 = new Intent(HomeActivity.this,HttpActivity.class);
+                        startActivity(intent3);
                         break;
                 }
             }
