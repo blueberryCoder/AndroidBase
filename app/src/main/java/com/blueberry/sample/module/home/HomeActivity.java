@@ -11,6 +11,8 @@ import com.blueberry.sample.common.BaseActivity;
 import com.blueberry.sample.module.PageActivity;
 import com.blueberry.sample.module.animation.AnimationActivity;
 import com.blueberry.sample.module.camera.CameraActivity;
+import com.blueberry.sample.module.data_binding.ShowDataBindingActivity;
+import com.blueberry.sample.module.db.DBActivity;
 import com.blueberry.sample.module.home.data.HomeData;
 import com.blueberry.sample.module.http.HttpActivity;
 import com.blueberry.sample.widgets.ListItemDecoration;
@@ -94,10 +96,21 @@ public class HomeActivity extends BaseActivity {
                         Intent intent3 = new Intent(HomeActivity.this,HttpActivity.class);
                         startActivity(intent3);
                         break;
+                    case 12:
+                        Intent intent4 = new Intent(HomeActivity.this, DBActivity.class);
+                        startActivity(intent4);
+                        break;
+                    case 13:
+                        // Data Binding
+                        startActivity(new Intent(HomeActivity.this, ShowDataBindingActivity.class));
+                        break;
                 }
             }
         });
     }
 
-
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+    }
 }

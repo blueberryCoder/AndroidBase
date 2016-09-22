@@ -19,6 +19,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data android:name="AA_DB_NAME" android:value="test.db" />
+        <meta-data android:name="AA_DB_VERSION" android:value="1" />
+
+
         <activity android:name="com.blueberry.sample.module.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,6 +57,14 @@
             android:label="Camera"></activity>
         <activity
             android:name=".module.http.HttpActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="Camera"></activity>
+        <activity
+            android:name=".module.db.DBActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="Camera"></activity>
+        <activity
+            android:name=".module.data_binding.ShowDataBindingActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="Camera"></activity>
 

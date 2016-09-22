@@ -21,8 +21,10 @@ public class HomeData {
         data.add(new HomeData(7, "android 屏幕适配", null));
         data.add(new HomeData(8, "通知", null));
         data.add(new HomeData(9, "动画", null));
-        data.add(new HomeData(10,"Camera",null));
-        data.add(new HomeData(11,"网络请求",null));
+        data.add(new HomeData(10, "Camera", null));
+        data.add(new HomeData(11, "网络请求", null));
+        data.add(new HomeData(12, "数据库", null));
+        data.add(new HomeData(13,"DataBinding",null));
     }
 
     /**

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data
+        >
+        <import type="android.view.View"></import>
+        <variable
+            name="presenter"
+            type="com.blueberry.sample.module.data_binding.ShowDataBindingActivity.Presenter">
+
+        </variable>
+
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="简单使用"
+            android:gravity="center"
+            android:onClick="@{(view) -> presenter.onClickSimpleDemo(view)}"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="双向绑定"
+            android:gravity="center"
+            android:onClick="@{(view) -> presenter.onClickTwoWayDemo(view)}"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="RecyclerView"
+            android:gravity="center"
+            android:onClick="@{(view)->presenter.onClickRecyclerViewDemo(view)}"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="链式调用"
+            android:gravity="center"
+            android:onClick="@{(view)->presenter.onClickChainDemo(view)}"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="ViewStub"
+            android:gravity="center"
+            android:onClick="@{(view)->presenter.onClickViewStubDemo(view)}"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="Binding Adapter"
+            android:onClick="@{(view) -> presenter.onClickBindingAdapter(view)}"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="Component"
+            android:onClick="@{(view)->presenter.onClickComponent(view)}"
+            />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:imageUrl ="@{`http://www.taopic.com/uploads/allimg/120421/107063-12042114025737.jpg`}"
+            />
+    </LinearLayout>
+
+</layout>

@@ -1,5 +1,6 @@
 package com.blueberry.sample.module.http;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,7 +27,7 @@ import butterknife.OnClick;
  * Created by blueberry on 2016/8/16.
  */
 public class HttpActivity extends BaseActivity {
-
+public static ArrayList<Activity> data = new ArrayList();
     @BindView(R.id.btn_send)
     Button btnSend;
 
@@ -34,6 +36,8 @@ public class HttpActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_http);
         ButterKnife.bind(this);
+
+        data.add(this);
     }
 
     @OnClick({R.id.btn_send, R.id.btn_send_multipart})
