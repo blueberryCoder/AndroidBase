@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.blueberry.sample">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <uses-feature android:name="android.hardware.camera"></uses-feature>
+    <uses-feature android:name="android.hardware.camera.autofocus"></uses-feature>
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:name="com.blueberry.sample.app.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <meta-data android:name="AA_DB_NAME" android:value="test.db" />
+        <meta-data android:name="AA_DB_VERSION" android:value="1" />
+
+
+        <activity android:name="com.blueberry.sample.module.home.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.blueberry.sample.module.PageActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="页面"></activity>
+
+        <activity
+            android:name=".module.view.srcoll_confict.ScrollConflictActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="滑动冲突"></activity>
+
+        <activity
+            android:name=".module.drawable.DrawableActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="Drawable"></activity>
+
+        <activity
+            android:name=".module.animation.AnimationActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="动画"></activity>
+
+        <activity
+            android:name=".module.camera.CameraActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="Camera"></activity>
+        <activity
+            android:name=".module.http.HttpActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="Camera"></activity>
+        <activity
+            android:name=".module.db.DBActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="Camera"></activity>
+        <activity
+            android:name=".module.data_binding.ShowDataBindingActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="Camera"></activity>
+        <activity android:name=".module.view.sticky_nav_layout.StickNavActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="Stick"
+            >
+
+        </activity>
+
+
+
+        <receiver android:name=".widgets.MyAppWidget">
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_provider_info"></meta-data>
+
+            <intent-filter>
+                <action android:name="com.blueberry.sample.appwidget_CLICK"></action>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"></action>
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

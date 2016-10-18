@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <item name="stick_nav_layout_header" type="id"></item>
+    <item name="stick_nav_layout_indicator" type="id"></item>
+    <item name="stick_nav_layout_viewpager" type="id"></item>
+</resources>

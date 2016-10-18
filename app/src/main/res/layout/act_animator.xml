@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/root"
+    >
+
+
+    <Button
+        android:id="@+id/btn_property"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/btn_bg_shape"
+        android:text="属性动画" />
+
+    <Button
+        android:id="@+id/btn_tween"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/btn_bg_shape"
+        android:text="补间动画" />
+
+    <Button
+        android:id="@+id/btn_frame"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/btn_bg_shape"
+        android:text="帧动画" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/girl"
+            android:id="@+id/iv_target"
+            android:padding="20dp"
+
+            />
+
+
+    </FrameLayout>
+</LinearLayout>
