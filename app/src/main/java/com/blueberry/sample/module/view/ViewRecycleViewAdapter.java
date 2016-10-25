@@ -23,11 +23,8 @@ import butterknife.ButterKnife;
  */
 public class ViewRecycleViewAdapter extends RecyclerView.Adapter<ViewRecycleViewAdapter.ViewHolder> {
 
-<<<<<<< HEAD
     private static final int TAG_POS_KEY = 213<<24;
-=======
-    private static final int TAG_POS_KEY = 1;
->>>>>>> f7c6c5f5373c161b8e6d75cae065f0f4526d8b45
+
 
     public int[] colors = {Color.BLUE, Color.GREEN, Color.YELLOW, Color.GRAY};
     private List<ViewBean> datas;
@@ -78,10 +75,7 @@ public class ViewRecycleViewAdapter extends RecyclerView.Adapter<ViewRecycleView
         ViewGroup.LayoutParams layoutParams = holder.tv.getLayoutParams();
         layoutParams.height = heights.get(position);
         holder.tv.setLayoutParams(layoutParams);
-<<<<<<< HEAD
         holder.itemView.setTag(TAG_POS_KEY,position);
-=======
->>>>>>> f7c6c5f5373c161b8e6d75cae065f0f4526d8b45
     }
 
     @Override

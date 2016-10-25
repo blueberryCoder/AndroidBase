@@ -14,10 +14,8 @@ import com.blueberry.sample.R;
 import com.blueberry.sample.common.BaseFragment;
 import com.blueberry.sample.module.view.data.ViewBean;
 import com.blueberry.sample.module.view.srcoll_confict.ScrollConflictActivity;
-<<<<<<< HEAD
 import com.blueberry.sample.module.view.sticky_nav_layout.StickNavActivity;
-=======
->>>>>>> f7c6c5f5373c161b8e6d75cae065f0f4526d8b45
+
 import com.blueberry.sample.widgets.SpaceItemDecoration;
 import com.orhanobut.logger.Logger;
 
@@ -66,11 +64,8 @@ public class ViewFragment extends BaseFragment {
         List<ViewBean> datas = new ArrayList<>();
         datas.add(new ViewBean(1,"滑动冲突"));
         datas.add(new ViewBean(2,"事件分发机制"));
-<<<<<<< HEAD
         datas.add(new ViewBean(3,"StickNavLayout")) ;
-=======
         datas.add(new ViewBean(3,"未实现")) ;
->>>>>>> f7c6c5f5373c161b8e6d75cae065f0f4526d8b45
         datas.add(new ViewBean(3,"未实现")) ;
         datas.add(new ViewBean(3,"未实现")) ;
         datas.add(new ViewBean(3,"未实现")) ;
@@ -91,10 +86,7 @@ public class ViewFragment extends BaseFragment {
         public void onItemClick(int pos, View view) {
             ViewBean viewBean = (ViewBean) adapter.getItem(pos);
             switch (viewBean.getId()) {
-<<<<<<< HEAD
                 case 0:break;
-=======
->>>>>>> f7c6c5f5373c161b8e6d75cae065f0f4526d8b45
                 case 1:
                     Logger.i("进入滑动冲突页面");
 
@@ -102,17 +94,11 @@ public class ViewFragment extends BaseFragment {
                     startActivity(intent);
                     break;
                 case 2:
-<<<<<<< HEAD
 
                     break;
                 case 3:
                     Logger.i("33333");
                     Intent intent1 = new Intent(getContext(), StickNavActivity.class);
-                    startActivity(intent1);
-=======
-                    break;
-                case 3:
->>>>>>> f7c6c5f5373c161b8e6d75cae065f0f4526d8b45
                     break;
             }
         }

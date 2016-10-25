@@ -23,13 +23,12 @@
         <meta-data android:name="AA_DB_NAME" android:value="test.db" />
         <meta-data android:name="AA_DB_VERSION" android:value="1" />
 
-
         <activity android:name="com.blueberry.sample.module.home.HomeActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"></action>
+                <category android:name="android.intent.category.LAUNCHER"></category>
             </intent-filter>
+
         </activity>
         <activity
             android:name="com.blueberry.sample.module.PageActivity"
@@ -67,18 +66,12 @@
             android:name=".module.data_binding.ShowDataBindingActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="Camera"></activity>
-<<<<<<< HEAD
         <activity android:name=".module.view.sticky_nav_layout.StickNavActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="Stick"
             >
 
         </activity>
-
-
-=======
->>>>>>> f7c6c5f5373c161b8e6d75cae065f0f4526d8b45
-
         <receiver android:name=".widgets.MyAppWidget">
             <meta-data
                 android:name="android.appwidget.provider"
